@@ -1,13 +1,19 @@
 class UrlMappings {
 
 	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
+        "/restaurant/search"(controller:'search', action: 'search')
+        "/restaurant/reservation"(controller:'reservation', parseRequest: true){
+        	action = [POST:'create', PUT: 'update']
         }
-
-        "/"(view:"/index")
+        "/restaurant/"(controller:'restaurant', parseRequest: true){
+        	action = [POST:'create', PUT: 'update']
+        }
+        "restaurant/table"(controller:'table', parseRequest: true){
+        	action = [POST:'create', PUT: 'update']
+        }
+        "restaurant/area"(controller:'area', parseRequest: true){
+        	action = [POST:'create', PUT: 'update']
+        }
         "500"(view:'/error')
 	}
 }
